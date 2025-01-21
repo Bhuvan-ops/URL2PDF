@@ -10,19 +10,21 @@
     <div class="container">
         <h1>URL to PDF Converter</h1>
         <form id="pdfForm">
-            <label for="url">Enter Website URL:</label>
-            <input type="text" id="url" placeholder="https://example.com" required>
+            <div class="form-group">
+                <label for="url">Enter Website URL :</label>
+                <input type="text" id="url" placeholder="https://example.com" required>
+            </div>
 
-            <div>
-                <label for="orientation">Orientation:</label>
+            <div class="form-group">
+                <label for="orientation">Orientation :</label>
                 <select id="orientation">
                     <option value="portrait">Portrait</option>
                     <option value="landscape">Landscape</option>
                 </select>
             </div>
 
-            <div>
-                <label for="paperSize">Paper Size:</label>
+            <div class="form-group">
+                <label for="paperSize">Paper Size :</label>
                 <select id="paperSize">
                     <option value="A4">A4</option>
                     <option value="Letter">Letter</option>
@@ -30,12 +32,17 @@
                 </select>
             </div>
 
-            <div>
-                <label for="margins">Margins (in mm):</label>
+            <div class="form-group">
+                <label for="margins">Margins (in mm) :</label>
                 <input type="number" id="margins" value="10" min="0" step="1">
             </div>
 
-            <button type="submit">Convert to PDF</button>
+            <div class="form-group">
+                <label for="pdfName">Enter pdf name :</label>
+                <input type="text" id="pdfName" placeholder="Enter pdf name" required>
+            </div>
+
+            <button type="submit">Download and Preview PDF</button>
         </form>
         <div id="result"></div>
     </div>

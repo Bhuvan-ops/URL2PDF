@@ -6,9 +6,14 @@ const fs = require('fs');
 const app = express();
 const PORT = 2500;
 
+const pdfFolderPath = path.join(__dirname, 'pdfs');
+if (!fs.existsSync(pdfFolderPath)) {
+    fs.mkdirSync(pdfFolderPath);
+}
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/pdfs', express.static('/home/bhuvank/Downloads/pdfs'));
+app.use('/pdfs', express.static(pdfFolderPath));
 
 app.post('/convert', async (req, res) => {
     const { url, orientation, paperSize, margins } = req.body;
@@ -25,7 +30,7 @@ app.post('/convert', async (req, res) => {
 
     try {
         await page.goto(url, { waitUntil: 'networkidle2' });
-const pdfPath = path.join('/home/bhuvank/Downloads/pdfs', `${Date.now()}.pdf`);
+        const pdfPath = path.join(pdfFolderPath, `${Date.now()}.pdf`);
 
         await page.pdf({
             path: pdfPath,
