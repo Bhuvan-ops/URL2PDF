@@ -8,7 +8,7 @@ const PORT = 3000;
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/pdfs', express.static(path.join(__dirname, 'public/pdfs')));
+app.use('/pdfs', express.static('/home/bhuvank/Downloads'));
 
 app.post('/convert', async (req, res) => {
     const { url, orientation, paperSize, margins } = req.body;
@@ -25,7 +25,7 @@ app.post('/convert', async (req, res) => {
 
     try {
         await page.goto(url, { waitUntil: 'networkidle2' });
-        const pdfPath = `public/pdfs/${Date.now()}.pdf`;
+        const pdfPath = path.join('/home/bhuvank/Downloads', `${Date.now()}.pdf`);
 
         await page.pdf({
             path: pdfPath,
